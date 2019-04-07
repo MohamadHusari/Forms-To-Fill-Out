@@ -1,7 +1,269 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Student Form</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>Mohamad Husari Pages.</p>
+<div class="container">
+    <h1 class="display-2 text-center">Student Form</h1>
+    <div class="row mt-5">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <ul class="nav nav-tabs " id="phaseTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="phase1-tab" data-toggle="tab" href="#phase1" role="tab" aria-controls="phase1" aria-selected="true">Phase1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="phase2-tab" data-toggle="tab" href="#phase2" role="tab" aria-controls="phase2" aria-selected="false">Phase2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="phase3-tab" data-toggle="tab" href="#phase3" role="tab" aria-controls="phase3" aria-selected="false">Phase3</a>
+                </li>
+            </ul>
+            <div class="tab-content border border-top-0 p-2 mb-5" id="myTabContent">
+                <div class="tab-pane fade show active w-50 mx-auto" id="phase1" role="tabpanel" aria-labelledby="phase1-tab">
+                    <div class="form-group">
+                        <label for="txtName">Name</label>
+                        <input type="text" class="form-control" id="txtName" aria-describedby="nameHelp" placeholder="Your Name" oninput="NameCheck(this)"/>
+                        <small id="nameHelp" class="form-text text-muted">Required, minimum 3 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtEmail1">Email address</label>
+                        <input type="email" class="form-control" id="txtEmail1" aria-describedby="emailHelp" placeholder="Enter email" oninput="EmailCheck(this)">
+                        <small id="emailHelp" class="form-text text-muted">Required, valid email address</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtBirthdate">Birth Date</label>
+                        <input type="date" class="form-control" id="txtBirthdate" aria-describedby="BirthdateHelp" oninput="BirthdateCheck(this)">
+                        <small id="BirthdateHelp" class="form-text text-muted">Required</small>
+                    </div>
+                    <a class="btn btn-primary btnNext text-white d-block w-25 ml-auto mr-auto">Next</a>
+                </div>
+                <div class="tab-pane fade d-none w-50 mx-auto" id="phase2" role="tabpanel" aria-labelledby="phase2-tab">
+                    <div class="form-group">
+                        <label for="txtCity">City</label>
+                        <input type="text" class="form-control" id="txtCity" aria-describedby="cityHelp" placeholder="Your City" oninput="FeildNotEmpty(this)"/>
+                        <small id="cityHelp" class="form-text text-muted">Required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtStreet">Street</label>
+                        <input type="text" class="form-control" id="txtStreet" aria-describedby="streetHelp" placeholder="Enter Street">
+                        <small id="streetHelp" class="form-text text-muted">Required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNumber">Number</label>
+                        <input type="number" class="form-control" id="txtNumber" aria-describedby="NumberHelp">
+                        <small id="NumberHelp" class="form-text text-muted">Required, not 0 or negative</small>
+                    </div>
+                    <div class="row">
+                        <div class="col pl-5"><a class="btn btn-primary btnNext text-white btn-block w-75" >Next</a></div>
+                        <div class="col pl-5"><a class="btn btn-primary btnPrevious text-white btn-block w-75" >Previous</a></div>
+
+
+                    </div>
+                </div>
+                <div class="tab-pane fade d-none" id="phase3" role="tabpanel" aria-labelledby="phase3-tab">
+                    <a class="btn btn-primary btnPrevious">Previous</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+<script src="js/jquery-3.3.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+    let AllbtnNext , AllbtnPrevious, myTabsContent;
+    AllbtnNext = document.querySelectorAll('.btnNext');
+    AllbtnPrevious = document.querySelectorAll('.btnPrevious');
+    myTabsContent = document.querySelector('myTabsContent');
+    AllbtnNext.forEach(function (btnNext) {
+        btnNext.addEventListener('click', () => {
+            const activetab = document.querySelector('.nav-item > .active');
+            const nextactivelink = activetab.closest('li').nextElementSibling.querySelector('a');
+            activetab.setAttribute('aria-selected','false');
+            activetab.classList.remove('active');
+            activetab.classList.add('disabled');
+            nextactivelink.setAttribute('aria-selected','true');
+            nextactivelink.classList.remove('disabled');
+            nextactivelink.classList.add('active');
+            nextactivelink.click();
+            const disbletab = document.querySelector('#myTabContent ' + activetab.getAttribute('href'));
+            const enabletab = document.querySelector('#myTabContent ' + nextactivelink.getAttribute('href'));
+            disbletab.classList.remove('show');
+            disbletab.classList.remove('active');
+            disbletab.classList.add('d-none');
+            enabletab.classList.add('show');
+            enabletab.classList.add('active');
+            enabletab.classList.remove('d-none');
+            // activetab.classList.remove('active');
+        });
+    });
+    AllbtnPrevious.forEach(function (btnPrevious) {
+        btnPrevious.addEventListener('click', () => {
+            const activetab = document.querySelector('.nav-item > .active');
+            const nextactivelink = activetab.closest('li').previousElementSibling.querySelector('a');
+            activetab.setAttribute('aria-selected','false');
+            activetab.classList.remove('active');
+            activetab.classList.add('disabled');
+            nextactivelink.setAttribute('aria-selected','true');
+            nextactivelink.classList.remove('disabled');
+            nextactivelink.classList.add('active');
+            nextactivelink.click();
+            const disbletab = document.querySelector('#myTabContent ' + activetab.getAttribute('href'));
+            const enabletab = document.querySelector('#myTabContent ' + nextactivelink.getAttribute('href'));
+            disbletab.classList.remove('show');
+            disbletab.classList.remove('active');
+            disbletab.classList.add('d-none');
+            enabletab.classList.add('show');
+            enabletab.classList.add('active');
+            enabletab.classList.remove('d-none');
+            // activetab.classList.remove('active');
+        });
+    });
+    function NameCheck(elem) {
+        // console.log(elem);
+        if(elem.value.length >= 3){
+
+            if(elem.classList.contains('is-invalid'))
+            {
+                elem.classList.remove('is-invalid');
+                elem.classList.add('is-valid');
+            }
+            else {
+                elem.classList.add('is-valid');
+            }
+        }
+        else {
+            if(elem.classList.contains('valid')){
+                elem.classList.add('is-invalid');
+                elem.classList.remove('is-valid');
+            }
+            else {
+                elem.classList.add('is-invalid');
+            }
+        }
+    }
+
+    function EmailCheck(elem) {
+        if(elem.value.includes('@') && elem.value.length > 5 && elem.value.includes('.')){
+
+            if(elem.classList.contains('is-invalid'))
+            {
+                elem.classList.remove('is-invalid');
+                elem.classList.add('is-valid');
+            }
+            else {
+                elem.classList.add('is-valid');
+            }
+        }
+        else {
+            if(elem.classList.contains('valid')){
+                elem.classList.add('is-invalid');
+                elem.classList.remove('is-valid');
+            }
+            else {
+                elem.classList.add('is-invalid');
+            }
+        }
+    }
+    function isGoodDate(dt){
+        const reGoodDate = /^\d{4}-\d{2}-\d{2}$/;
+        return reGoodDate.test(dt);
+    }
+
+    function BirthdateCheck(elem) {
+        // console.log(elem.value);
+        // console.log(isGoodDate(elem.value));
+        if(isGoodDate(elem.value)){
+
+            if(elem.classList.contains('is-invalid'))
+            {
+                elem.classList.remove('is-invalid');
+                elem.classList.add('is-valid');
+            }
+            else {
+                elem.classList.add('is-valid');
+            }
+        }
+        else {
+            if(elem.classList.contains('valid')){
+                elem.classList.add('is-invalid');
+                elem.classList.remove('is-valid');
+            }
+            else {
+                elem.classList.add('is-invalid');
+            }
+        }
+    }
+
+
+    // $('.btnNext').click(function(){
+    //     $('.nav-item + .active').next('li').find('a').trigger('click');
+    // });
+    //
+    // $('.btnPrevious').click(function(){
+    //     $('.nav-item + .active').prev('li').find('a').trigger('click');
+    // });
+    //
+    // const button = document.querySelector('button[type="submit"]'),
+    //     showbut = document.querySelector('button[type="button"]'),
+    //     rngGrade = document.querySelector('#rngGrade'),
+    //     spnGrade = document.querySelector('.badge-info'),
+    //     txtName = document.querySelector('#txtName'),
+    //     slctCourse = document.querySelector('#slctCourse'),
+    //     txtImage = document.querySelector('#txtImage'),
+    //     img = document.querySelector('.student-preview img'),
+    //     progressBar = document.querySelector('.student-preview .progress-bar'),
+    //     cardTitle = document.querySelector('.student-preview .card-title'),
+    //     cardText = document.querySelector('.student-preview .card-text'),
+    //     studentsGallery = document.querySelector('#students-gallery');
+    // const students  = [];
+    //
+    // showbut.addEventListener('click', () => {
+    //     localStorage.students = JSON.stringify(students);
+    //     window.location.href = 'http://localhost/next-08-student-details.html';
+    // });
+    //
+    // button.addEventListener('click', () => {
+    //     img.src = txtImage.value;
+    //     progressBar.style.width = progressBar.innerText = `${rngGrade.value}%`;
+    //     cardTitle.innerText = txtName.value;
+    //     cardText.innerText = slctCourse.value;
+    //     img.src = txtImage.value;
+    //     students.push({
+    //         name: txtName.value,
+    //         course: slctCourse.value,
+    //         imgurl: txtImage.value,
+    //         progress: rngGrade.value
+    //     });
+    //     studentsGallery.innerHTML += `<div class="col-md-3">
+    //       <div class="card" style="width: 18rem;">
+    //         <img src="${txtImage.value}" class="card-img-top" alt="..." />
+    //         <div class="progress">
+    //             <div class="progress-bar" role="progressbar" style="width: ${rngGrade.value}%;" aria-valuenow="${rngGrade.value}" aria-valuemin="0" aria-valuemax="100">${rngGrade.value}%</div>
+    //         </div>
+    //         <div class="card-body">
+    //           <h5 class="card-title">${txtName.value}</h5>
+    //           <p class="card-text">
+    //             ${slctCourse.value}
+    //           </p>
+    //           <button class="btn btn-primary">Go somewhere</button>
+    //         </div>
+    //       </div>
+    //     </div>`;
+    // });
+    //
+    // function updateGrade() {
+    //     spnGrade.innerText = rngGrade.value;
+    // }
+</script>
 </body>
 </html>
