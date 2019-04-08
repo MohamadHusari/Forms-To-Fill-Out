@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Student Form</title>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
@@ -23,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link disabled" id="phase3-tab" data-toggle="tab" href="#phase3" role="tab" aria-controls="phase3" aria-selected="false">Phase3</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="phase4-tab" data-toggle="tab" href="#phase4" role="tab" aria-controls="phase4" aria-selected="false">Phase4</a>
+                </li>
             </ul>
             <div class="tab-content border border-top-0 p-2 mb-5" id="myTabContent">
                 <div class="tab-pane fade show active w-50 mx-auto" id="phase1" role="tabpanel" aria-labelledby="phase1-tab">
@@ -32,8 +36,8 @@
                         <small id="nameHelp" class="form-text text-muted">Required, minimum 3 characters</small>
                     </div>
                     <div class="form-group">
-                        <label for="txtEmail1">Email address</label>
-                        <input type="email" class="form-control" id="txtEmail1" aria-describedby="emailHelp" placeholder="Enter email" oninput="EmailCheck(this)">
+                        <label for="txtEmail">Email address</label>
+                        <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" placeholder="Enter email" oninput="EmailCheck(this)">
                         <small id="emailHelp" class="form-text text-muted">Required, valid email address</small>
                     </div>
                     <div class="form-group">
@@ -41,7 +45,7 @@
                         <input type="date" class="form-control" id="txtBirthdate" aria-describedby="BirthdateHelp" oninput="BirthdateCheck(this)">
                         <small id="BirthdateHelp" class="form-text text-muted">Required</small>
                     </div>
-                    <a class="btn btn-primary btnNext text-white d-block w-25 ml-auto mr-auto">Next</a>
+                    <a class="btn btn-primary btnNext text-white d-block w-25 mx-auto">Next</a>
                 </div>
                 <div class="tab-pane fade d-none w-50 mx-auto" id="phase2" role="tabpanel" aria-labelledby="phase2-tab">
                     <div class="form-group">
@@ -51,24 +55,74 @@
                     </div>
                     <div class="form-group">
                         <label for="txtStreet">Street</label>
-                        <input type="text" class="form-control" id="txtStreet" aria-describedby="streetHelp" placeholder="Enter Street">
+                        <input type="text" class="form-control" id="txtStreet" aria-describedby="streetHelp" placeholder="Enter Street" oninput="FeildNotEmpty(this)">
                         <small id="streetHelp" class="form-text text-muted">Required</small>
                     </div>
                     <div class="form-group">
                         <label for="txtNumber">Number</label>
-                        <input type="number" class="form-control" id="txtNumber" aria-describedby="NumberHelp">
+                        <input type="number" class="form-control" id="txtNumber" aria-describedby="NumberHelp" oninput="NumberCheck(this)">
                         <small id="NumberHelp" class="form-text text-muted">Required, not 0 or negative</small>
                     </div>
                     <div class="row">
                         <div class="col pl-5"><a class="btn btn-primary btnNext text-white btn-block w-75" >Next</a></div>
                         <div class="col pl-5"><a class="btn btn-primary btnPrevious text-white btn-block w-75" >Previous</a></div>
-
-
                     </div>
                 </div>
-                <div class="tab-pane fade d-none" id="phase3" role="tabpanel" aria-labelledby="phase3-tab">
-                    <a class="btn btn-primary btnPrevious">Previous</a>
+                <div class="tab-pane fade d-none w-50 mx-auto" id="phase3" role="tabpanel" aria-labelledby="phase3-tab">
+                    <div class="form-group">
+                        <label for="txtImage">Image Url</label>
+                        <input type="url" class="form-control" id="txtImage" aria-describedby="imageHelp" placeholder="Image link" oninput="ImageCheck(this)"/>
+                        <small id="imageHelp" class="form-text text-muted">Required, url</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="d-block">Hobbies</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Chess">
+                            <label class="form-check-label" for="inlineCheckbox1">Chess</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Movies">
+                            <label class="form-check-label" for="inlineCheckbox2">Movies</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Sport">
+                            <label class="form-check-label" for="inlineCheckbox3">Sport</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Cars">
+                            <label class="form-check-label" for="inlineCheckbox4">Cars</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="Dolls">
+                            <label class="form-check-label" for="inlineCheckbox5">Dolls</label>
+                        </div>
+                        <small class="form-text text-muted">Not required</small>
+                    </div>
+                    <div class="row">
+                        <div class="col pl-5"><a class="btn btn-primary btnPrevious text-white btn-block w-75" >Previous</a></div>
+                        <div class="col pl-5"><a class="btn btn-danger btnNext text-white btn-block w-75" >Finish</a></div>
+                    </div>
                 </div>
+                <div class="tab-pane fade d-none" id="phase4" role="tabpanel" aria-labelledby="phase4-tab">
+                    <div class="card mb-3 border-0">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img id="displatImg" src="images/blank-profile.png" class="card-img rounded img-fluid" alt="Profie Image">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 id="displayName" class="card-title"></h5>
+                                    <p id="displayEmail" class="card-text"></p>
+                                    <p id="displayBirthDate" class="card-text"></p>
+                                    <p id="displayHobbies" class="card-text"></p>
+                                    <p id="displayLocation" class="card-text"></p>
+                                    <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="col-2"></div>
@@ -78,192 +132,6 @@
 <script src="js/jquery-3.3.1.slim.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
-<script>
-    let AllbtnNext , AllbtnPrevious, myTabsContent;
-    AllbtnNext = document.querySelectorAll('.btnNext');
-    AllbtnPrevious = document.querySelectorAll('.btnPrevious');
-    myTabsContent = document.querySelector('myTabsContent');
-    AllbtnNext.forEach(function (btnNext) {
-        btnNext.addEventListener('click', () => {
-            const activetab = document.querySelector('.nav-item > .active');
-            const nextactivelink = activetab.closest('li').nextElementSibling.querySelector('a');
-            activetab.setAttribute('aria-selected','false');
-            activetab.classList.remove('active');
-            activetab.classList.add('disabled');
-            nextactivelink.setAttribute('aria-selected','true');
-            nextactivelink.classList.remove('disabled');
-            nextactivelink.classList.add('active');
-            nextactivelink.click();
-            const disbletab = document.querySelector('#myTabContent ' + activetab.getAttribute('href'));
-            const enabletab = document.querySelector('#myTabContent ' + nextactivelink.getAttribute('href'));
-            disbletab.classList.remove('show');
-            disbletab.classList.remove('active');
-            disbletab.classList.add('d-none');
-            enabletab.classList.add('show');
-            enabletab.classList.add('active');
-            enabletab.classList.remove('d-none');
-            // activetab.classList.remove('active');
-        });
-    });
-    AllbtnPrevious.forEach(function (btnPrevious) {
-        btnPrevious.addEventListener('click', () => {
-            const activetab = document.querySelector('.nav-item > .active');
-            const nextactivelink = activetab.closest('li').previousElementSibling.querySelector('a');
-            activetab.setAttribute('aria-selected','false');
-            activetab.classList.remove('active');
-            activetab.classList.add('disabled');
-            nextactivelink.setAttribute('aria-selected','true');
-            nextactivelink.classList.remove('disabled');
-            nextactivelink.classList.add('active');
-            nextactivelink.click();
-            const disbletab = document.querySelector('#myTabContent ' + activetab.getAttribute('href'));
-            const enabletab = document.querySelector('#myTabContent ' + nextactivelink.getAttribute('href'));
-            disbletab.classList.remove('show');
-            disbletab.classList.remove('active');
-            disbletab.classList.add('d-none');
-            enabletab.classList.add('show');
-            enabletab.classList.add('active');
-            enabletab.classList.remove('d-none');
-            // activetab.classList.remove('active');
-        });
-    });
-    function NameCheck(elem) {
-        // console.log(elem);
-        if(elem.value.length >= 3){
-
-            if(elem.classList.contains('is-invalid'))
-            {
-                elem.classList.remove('is-invalid');
-                elem.classList.add('is-valid');
-            }
-            else {
-                elem.classList.add('is-valid');
-            }
-        }
-        else {
-            if(elem.classList.contains('valid')){
-                elem.classList.add('is-invalid');
-                elem.classList.remove('is-valid');
-            }
-            else {
-                elem.classList.add('is-invalid');
-            }
-        }
-    }
-
-    function EmailCheck(elem) {
-        if(elem.value.includes('@') && elem.value.length > 5 && elem.value.includes('.')){
-
-            if(elem.classList.contains('is-invalid'))
-            {
-                elem.classList.remove('is-invalid');
-                elem.classList.add('is-valid');
-            }
-            else {
-                elem.classList.add('is-valid');
-            }
-        }
-        else {
-            if(elem.classList.contains('valid')){
-                elem.classList.add('is-invalid');
-                elem.classList.remove('is-valid');
-            }
-            else {
-                elem.classList.add('is-invalid');
-            }
-        }
-    }
-    function isGoodDate(dt){
-        const reGoodDate = /^\d{4}-\d{2}-\d{2}$/;
-        return reGoodDate.test(dt);
-    }
-
-    function BirthdateCheck(elem) {
-        // console.log(elem.value);
-        // console.log(isGoodDate(elem.value));
-        if(isGoodDate(elem.value)){
-
-            if(elem.classList.contains('is-invalid'))
-            {
-                elem.classList.remove('is-invalid');
-                elem.classList.add('is-valid');
-            }
-            else {
-                elem.classList.add('is-valid');
-            }
-        }
-        else {
-            if(elem.classList.contains('valid')){
-                elem.classList.add('is-invalid');
-                elem.classList.remove('is-valid');
-            }
-            else {
-                elem.classList.add('is-invalid');
-            }
-        }
-    }
-
-
-    // $('.btnNext').click(function(){
-    //     $('.nav-item + .active').next('li').find('a').trigger('click');
-    // });
-    //
-    // $('.btnPrevious').click(function(){
-    //     $('.nav-item + .active').prev('li').find('a').trigger('click');
-    // });
-    //
-    // const button = document.querySelector('button[type="submit"]'),
-    //     showbut = document.querySelector('button[type="button"]'),
-    //     rngGrade = document.querySelector('#rngGrade'),
-    //     spnGrade = document.querySelector('.badge-info'),
-    //     txtName = document.querySelector('#txtName'),
-    //     slctCourse = document.querySelector('#slctCourse'),
-    //     txtImage = document.querySelector('#txtImage'),
-    //     img = document.querySelector('.student-preview img'),
-    //     progressBar = document.querySelector('.student-preview .progress-bar'),
-    //     cardTitle = document.querySelector('.student-preview .card-title'),
-    //     cardText = document.querySelector('.student-preview .card-text'),
-    //     studentsGallery = document.querySelector('#students-gallery');
-    // const students  = [];
-    //
-    // showbut.addEventListener('click', () => {
-    //     localStorage.students = JSON.stringify(students);
-    //     window.location.href = 'http://localhost/next-08-student-details.html';
-    // });
-    //
-    // button.addEventListener('click', () => {
-    //     img.src = txtImage.value;
-    //     progressBar.style.width = progressBar.innerText = `${rngGrade.value}%`;
-    //     cardTitle.innerText = txtName.value;
-    //     cardText.innerText = slctCourse.value;
-    //     img.src = txtImage.value;
-    //     students.push({
-    //         name: txtName.value,
-    //         course: slctCourse.value,
-    //         imgurl: txtImage.value,
-    //         progress: rngGrade.value
-    //     });
-    //     studentsGallery.innerHTML += `<div class="col-md-3">
-    //       <div class="card" style="width: 18rem;">
-    //         <img src="${txtImage.value}" class="card-img-top" alt="..." />
-    //         <div class="progress">
-    //             <div class="progress-bar" role="progressbar" style="width: ${rngGrade.value}%;" aria-valuenow="${rngGrade.value}" aria-valuemin="0" aria-valuemax="100">${rngGrade.value}%</div>
-    //         </div>
-    //         <div class="card-body">
-    //           <h5 class="card-title">${txtName.value}</h5>
-    //           <p class="card-text">
-    //             ${slctCourse.value}
-    //           </p>
-    //           <button class="btn btn-primary">Go somewhere</button>
-    //         </div>
-    //       </div>
-    //     </div>`;
-    // });
-    //
-    // function updateGrade() {
-    //     spnGrade.innerText = rngGrade.value;
-    // }
-</script>
+<script src="js/ourscript.js"></script>
 </body>
 </html>
