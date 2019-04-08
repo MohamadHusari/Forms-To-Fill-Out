@@ -53,7 +53,10 @@ AllbtnNext.forEach(function (btnNext) {
                 displayName.innerText = Student['txtName'];
                 displayEmail.innerHTML = `<i class="fas fa-envelope-open"></i> ${Student['txtEmail']}`;
                 displayBirthDate.innerHTML = `<i class="fas fa-birthday-cake"></i> ${Student['txtBirthdate']}`;
-                displayHobbies.innerHTML = `<i class="fas fa-ticket-alt"></i> ${Student['txtHobbies']}`;
+                if(Student['txtHobbies'] != "")
+                    displayHobbies.innerHTML = `<i class="fas fa-ticket-alt"></i> ${Student['txtHobbies']}`;
+                else
+                    displayHobbies.innerHTML = `<i class="fas fa-ticket-alt"></i> <ins>You don't checked a hobby</ins>`;
                 displayLocation.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${Student['txtCity']}, ${Student['txtStreet']} - ${Student['txtNumber']}`;
             }
         }
