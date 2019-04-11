@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Student Form</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1 class="display-2 text-center">Student Form</h1>
+    <div class="row mt-5">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <ul class="nav nav-tabs " id="phaseTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="phase1-tab" data-toggle="tab" href="#phase1" role="tab" aria-controls="phase1" aria-selected="true">Phase1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="phase2-tab" data-toggle="tab" href="#phase2" role="tab" aria-controls="phase2" aria-selected="false">Phase2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="phase3-tab" data-toggle="tab" href="#phase3" role="tab" aria-controls="phase3" aria-selected="false">Phase3</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="phase4-tab" data-toggle="tab" href="#phase4" role="tab" aria-controls="phase4" aria-selected="false">Phase4</a>
+                </li>
+            </ul>
+            <div class="tab-content border border-top-0 p-2 mb-5" id="myTabContent">
+                <div class="tab-pane fade show active w-50 mx-auto" id="phase1" role="tabpanel" aria-labelledby="phase1-tab">
+                    <div class="form-group">
+                        <label for="txtName">Name</label>
+                        <input type="text" class="form-control" id="txtName" aria-describedby="nameHelp" placeholder="Your Name" oninput="NameCheck(this)"/>
+                        <small id="nameHelp" class="form-text text-muted">Required, minimum 3 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtEmail">Email address</label>
+                        <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" placeholder="Enter email" oninput="EmailCheck(this)">
+                        <small id="emailHelp" class="form-text text-muted">Required, valid email address</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtBirthdate">Birth Date</label>
+                        <input type="date" class="form-control" id="txtBirthdate" aria-describedby="BirthdateHelp" oninput="BirthdateCheck(this)">
+                        <small id="BirthdateHelp" class="form-text text-muted">Required</small>
+                    </div>
+                </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+<script src="js/jquery-3.3.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ourscript.js"></script>
+</body>
+</html>
